@@ -6,7 +6,7 @@ const getAll = async (req, res) => {
 
     res.send(movies);
   } catch (e) {
-    res.sendStatus(500);
+    next(e);
   }
 };
 

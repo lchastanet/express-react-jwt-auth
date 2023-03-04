@@ -9,6 +9,7 @@ const findOne = async (userId) => {
     return user;
   } catch (e) {
     console.log(e);
+    throw new SQLGenericError();
   }
 };
 
@@ -21,6 +22,7 @@ const findByEmail = async (email) => {
     return user;
   } catch (e) {
     console.log(e);
+    throw new SQLGenericError();
   }
 };
 
@@ -36,6 +38,7 @@ const addOne = async (user) => {
     return { id: result.insertId, name, email };
   } catch (e) {
     console.log(e);
+    throw new SQLGenericError();
   }
 };
 

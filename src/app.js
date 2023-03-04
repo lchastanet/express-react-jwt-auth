@@ -13,10 +13,10 @@ app.use(express.json());
 
 app.use("/api", router);
 
+app.use(errorHandler);
+
 app.get("*", (req, res) => {
   res.status(404).json({ message: "Not found !" });
 });
-
-app.use(errorHandler);
 
 module.exports = app;

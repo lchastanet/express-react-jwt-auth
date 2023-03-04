@@ -8,6 +8,7 @@ const findAll = async () => {
     return movies;
   } catch (e) {
     console.log(e);
+    throw new SQLGenericError();
   }
 };
 

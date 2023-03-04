@@ -4,8 +4,6 @@ const authorization = (req, res, next) => {
   try {
     const headerBearer = req.headers.authorization;
 
-    console.log(req.headers);
-
     if (!headerBearer) throw new Error();
 
     const token = headerBearer.split(" ")[1];

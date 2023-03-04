@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
   }
 };
 
-const getOne = async (req, res) => {
+const getOne = async (req, res, next) => {
   try {
     const movieId = parseInt(req.params.id);
 
@@ -20,7 +20,7 @@ const getOne = async (req, res) => {
 
     res.send(movies);
   } catch (e) {
-    res.sendStatus(500);
+    next(e);
   }
 };
 

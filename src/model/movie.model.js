@@ -1,4 +1,5 @@
 const db = require("./db.js");
+const { SQLGenericError } = require("../errors/SQLGenericError.js");
 
 const findAll = async () => {
   try {
@@ -17,6 +18,7 @@ const findOne = async (id) => {
     return movie;
   } catch (e) {
     console.log(e);
+    throw new SQLGenericError();
   }
 };
 

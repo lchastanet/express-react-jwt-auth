@@ -28,12 +28,16 @@ const login = async (req, res, next) => {
 
     const token = encodeJWT(user);
 
-    res.json({ token });
+    res.cookie("auth_token", token, { httpOnly: true, secure: false });
+
+    res.status(200).json({ username: user.name });
   } catch (e) {
     next(e);
   }
 };
 
-const logout = async (req, res) => {};
+const logout = async (req, res) => {
+  res.clearCookie("auth_token").sendStatus(200);
+};
 
 module.exports = { login, logout };

@@ -2,11 +2,11 @@ const { decodeJWT } = require("../helper/jwt.helper.js");
 
 const authorization = (req, res, next) => {
   try {
-    const headerBearer = req.headers.authorization;
+    const token = req.cookies.auth_token;
 
-    if (!headerBearer) throw new Error();
+    console.log(token);
 
-    const token = headerBearer.split(" ")[1];
+    if (!token) throw new Error();
 
     const data = decodeJWT(token);
 

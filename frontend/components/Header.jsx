@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import movieAPI from "../services/movieAPI";
+import expressAPI from "../services/expressAPI";
 import { useAuthContext } from "../contexts/authContext";
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
   const navigate = useNavigate();
 
   const handleDisconnection = () => {
-    movieAPI
+    expressAPI
       .get("/api/logout")
       .then(() => {
         localStorage.clear();

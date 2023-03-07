@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import movieAPI from "../services/movieAPI";
+import expressAPI from "../services/expressAPI";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ function SignUp() {
     e.preventDefault();
 
     if ((email, password, name)) {
-      movieAPI
+      expressAPI
         .post("/api/user", { email, password, name })
         .then(() => navigate("/login"))
         .catch((err) => console.error(err));

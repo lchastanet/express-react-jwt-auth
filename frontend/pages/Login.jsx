@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import movieAPI from "../services/movieAPI";
+import expressAPI from "../services/expressAPI";
 import { useAuthContext } from "../contexts/authContext";
 
 function Login() {
@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
 
     if (email && password) {
-      movieAPI
+      expressAPI
         .post("/api/login", { email, password })
         .then((res) => {
           setUser(res.data);

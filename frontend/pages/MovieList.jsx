@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import movieAPI from "../services/movieAPI";
+import expressAPI from "../services/expressAPI";
 
 import MovieCard from "../components/MovieCard";
 
@@ -8,7 +8,7 @@ function MovieList() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    movieAPI
+    expressAPI
       .get("/api/movie")
       .then((res) => setMovies(res.data))
       .catch((err) => console.error(err));

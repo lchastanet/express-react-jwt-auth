@@ -18,7 +18,7 @@ const getOne = async (req, res) => {
 
 const createOne = async (req, res) => {
   try {
-    const errors = validateUser(req.body);
+    const errors = validateUser(req.body, true);
 
     if (errors) return res.status(401).send(errors);
 

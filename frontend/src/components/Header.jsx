@@ -51,6 +51,13 @@ function Header() {
                       Profile
                     </Link>
                   </li>
+                  {user.roles.includes("admin") && (
+                    <li className="nav-item">
+                      <Link to="/users-list" className="nav-link">
+                        Users List
+                      </Link>
+                    </li>
+                  )}
                   <li className="nav-item">
                     <button
                       onClick={handleDisconnection}

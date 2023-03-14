@@ -42,4 +42,15 @@ const addOne = async (user) => {
   }
 };
 
-module.exports = { findOne, addOne, findByEmail };
+const findAll = async () => {
+  try {
+    const [result] = await db.query("select * from user");
+
+    return result;
+  } catch (e) {
+    console.log(e);
+    throw new SQLGenericError();
+  }
+};
+
+module.exports = { findOne, addOne, findByEmail, findAll };

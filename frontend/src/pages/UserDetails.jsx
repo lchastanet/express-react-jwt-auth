@@ -3,6 +3,8 @@ import { useAuthContext } from "../contexts/authContext";
 function UserDetails() {
   const { user } = useAuthContext();
 
+  console.log(user);
+
   return (
     <input
       type="text"

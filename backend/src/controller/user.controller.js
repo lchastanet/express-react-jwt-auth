@@ -1,6 +1,16 @@
-const { findOne, addOne } = require("../model/user.model.js");
+const { findOne, addOne, findAll } = require("../model/user.model.js");
 const validateUser = require("../validator/user.validator.js");
 const { hashPassword } = require("../helper/argon.helper.js");
+
+const browse = async (req, res) => {
+  try {
+    const users = await findAll();
+
+    res.send(users);
+  } catch (e) {
+    res.sendStatus(500);
+  }
+};
 
 const getOne = async (req, res) => {
   try {
@@ -33,4 +43,4 @@ const createOne = async (req, res) => {
   }
 };
 
-module.exports = { getOne, createOne };
+module.exports = { getOne, createOne, browse };

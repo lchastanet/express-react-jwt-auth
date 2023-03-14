@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import User from "./pages/User";
 import UserDetails from "./pages/UserDetails";
 import UserHome from "./pages/UserHome";
+import UsersList from "./pages/UsersList";
 
 function App() {
   const { user } = useAuthContext();
@@ -21,11 +22,21 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route element={<ProtectedRoute user={user} />}>
+        <Route element={<ProtectedRoute isAllowed={user} />}>
           <Route path="/movies" element={<MovieList />} />
           <Route path="/user" element={<User />}>
             <Route index element={<UserHome />} />
             <Route path="details" element={<UserDetails />} />
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute
+                isAllowed={user.roles.includes("admin")}
+                redirectPath="/user"
+              />
+            }
+          >
+            <Route path="users-list" element={<UsersList />} />
           </Route>
         </Route>
       </Routes>

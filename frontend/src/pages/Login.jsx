@@ -19,8 +19,10 @@ function Login() {
       expressAPI
         .post("/api/login", { email, password })
         .then((res) => {
-          setUser(res.data);
-          localStorage.setItem("user", JSON.stringify(res.data));
+          const user = { ...res.data, roles: JSON.parse(res.data.roles) };
+
+          setUser(user);
+          localStorage.setItem("user", JSON.stringify(user));
           navigate("/movies");
         })
         .catch((err) => console.log(err.response.data));

@@ -10,6 +10,7 @@ const authorization = (req, res, next) => {
 
     req.userId = data.id;
     req.userName = data.name;
+    req.roles = data.roles;
 
     return next();
   } catch (e) {

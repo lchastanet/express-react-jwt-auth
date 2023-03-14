@@ -47,6 +47,11 @@ function Header() {
                     </Link>
                   </li>
                   <li className="nav-item">
+                    <Link to="/user" className="nav-link">
+                      Profile
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <button
                       onClick={handleDisconnection}
                       className="ml-auto btn btn-danger"

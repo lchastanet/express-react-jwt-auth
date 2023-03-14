@@ -8,7 +8,7 @@ function User() {
 
   return (
     <div>
-      <h1>hello {user.username}</h1>
+      <h1>Hello {user.username} !</h1>
       <Outlet />
     </div>
   );

@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import SignUp from "../pages/SignUp";
-import MovieList from "../pages/MovieList";
-import Header from "../components/Header";
-import { useAuthContext } from "../contexts/authContext";
-import ProtectedRoute from "../components/ProtectedRoute";
-import User from "../pages/User";
-import UserDetails from "../pages/UserDetails";
-import UserHome from "../pages/UserHome";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import MovieList from "./pages/MovieList";
+import Header from "./components/Header";
+import { useAuthContext } from "./contexts/authContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import User from "./pages/User";
+import UserDetails from "./pages/UserDetails";
+import UserHome from "./pages/UserHome";
 
 function App() {
   const { user } = useAuthContext();

@@ -1,56 +1,55 @@
-const db = require("./db.js");
+const db = require("./db.js")
+const { SQLGenericError } = require("../errors/SQLGenericError.js")
 
 const findOne = async (userId) => {
   try {
-    const [user] = await db.query("select * from `user` where id = ?", [
-      userId,
-    ]);
+    const [user] = await db.query("select * from `user` where id = ?", [userId])
 
-    return user;
+    return user
   } catch (e) {
-    console.log(e);
-    throw new SQLGenericError();
+    console.log(e)
+    throw new SQLGenericError()
   }
-};
+}
 
 const findByEmail = async (email) => {
   try {
     const [user] = await db.query("select * from `user` where email = ?", [
       email,
-    ]);
+    ])
 
-    return user;
+    return user
   } catch (e) {
-    console.log(e);
-    throw new SQLGenericError();
+    console.log(e)
+    throw new SQLGenericError()
   }
-};
+}
 
 const addOne = async (user) => {
   try {
-    const { name, email, password } = user;
+    const { name, email, password } = user
 
     const [result] = await db.query(
       "insert into `user` (name, email, password) values (?, ?, ?)",
       [name, email, password]
-    );
+    )
 
-    return { id: result.insertId, name, email };
+    return { id: result.insertId, name, email }
   } catch (e) {
-    console.log(e);
-    throw new SQLGenericError();
+    console.log(e)
+    throw new SQLGenericError()
   }
-};
+}
 
 const findAll = async () => {
   try {
-    const [result] = await db.query("select * from user");
+    const [result] = await db.query("select * from user")
 
-    return result;
+    return result
   } catch (e) {
-    console.log(e);
-    throw new SQLGenericError();
+    console.log(e)
+    throw new SQLGenericError()
   }
-};
+}
 
-module.exports = { findOne, addOne, findByEmail, findAll };
+module.exports = { findOne, addOne, findByEmail, findAll }

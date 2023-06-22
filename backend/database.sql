@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.10.3-MariaDB, for osx10.18 (arm64)
+-- MariaDB dump 10.19-11.0.2-MariaDB, for osx10.18 (arm64)
 --
 -- Host: localhost    Database: express_auth
 -- ------------------------------------------------------
--- Server version	10.10.3-MariaDB
+-- Server version	10.11.3-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -105,9 +105,10 @@ CREATE TABLE `user` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `roles` varchar(255) NOT NULL DEFAULT '["user"]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_UN_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,9 +118,13 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'toto','toto@toto.to',''),
-(2,'tutu','tutu@tutu.tu',''),
-(3,'tata','tata@tata.ta','');
+(1,'toto','toto@toto.to','','[\"user\"]'),
+(2,'tutu','tutu@tutu.tu','','[\"user\"]'),
+(3,'tata','tata@tata.ta','','[\"user\"]'),
+(4,'wilder','wilder@hello.com','$argon2id$v=19$m=65536,t=5,p=1$e7Tr1+sDut9ayLIbWeazrg$GZNppSw73uroXR9+QNDY/1dz+YbFYHKiJ/BJZl3ZDKk','[\"user\"]'),
+(5,'Hercule','hercule@hello.com','$argon2id$v=19$m=65536,t=5,p=1$YomvWCUx09sGrohj29c48A$SQky4biit2dt6FKQFPIv2y7vZ3jJUper4/+bcLONCfU','[\"user\"]'),
+(6,'bart','bart@simpson.com','$argon2id$v=19$m=65536,t=5,p=1$Gs0aL0irRxnadBsv6yprfg$/uYFKJcfS6/9bm1oBqluQIJu6b7kLV10w89v2O15Dgs','[\"user\",\"admin\"]'),
+(7,'Joe','joe@hello.com','$argon2id$v=19$m=65536,t=5,p=1$hZSsVoZ9NRVSHg25TkBEzQ$2a8NFpgBIjEycklXdDTrTDth4bh9P1xmXx47gjAhzlE','[\"user\",\"admin\"]');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-27 14:44:17
+-- Dump completed on 2023-06-22 15:40:09

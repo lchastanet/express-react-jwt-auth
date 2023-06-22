@@ -1,23 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 
-import expressAPI from "../services/expressAPI";
-import { useAuthContext } from "../contexts/authContext";
+import expressAPI from "../services/expressAPI"
+import { useAuthContext } from "../contexts/authContext"
 
 function Header() {
-  const { user, setUser } = useAuthContext();
+  const { user, setUser } = useAuthContext()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleDisconnection = () => {
     expressAPI
       .get("/api/logout")
       .then(() => {
-        localStorage.clear();
-        setUser(null);
-        navigate("/");
+        localStorage.clear()
+        setUser({ roles: ["visitor"] })
+        navigate("/")
       })
-      .catch((err) => console.error(err));
-  };
+      .catch((err) => console.error(err))
+  }
 
   return (
     <header>
@@ -39,7 +39,7 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              {user ? (
+              {!user.roles.includes("visitor") ? (
                 <>
                   <li className="nav-item">
                     <Link to="/movies" className="nav-link">
@@ -86,7 +86,7 @@ function Header() {
         </div>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header
